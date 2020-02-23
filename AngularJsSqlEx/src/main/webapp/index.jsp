@@ -22,7 +22,7 @@
       <div ng-app="myApp">
          <form ng-controller="EmployeeController" ng-submit="getData()">
             <p>
-               <button id="formBtn" type="submit" class="btn btn-primary center-block marginTop14">Get Data from Db</button>
+               <button id="formBtn" type="submit" class="btn btn-primary center-block marginTop14">Push Me</button>
             </p>
            	<div id="empTblContainer" class="container" ng-show="empList.length">
            		<table id="empTbl" class="table table-bordered marginTop14">
