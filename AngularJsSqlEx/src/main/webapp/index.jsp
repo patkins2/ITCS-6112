@@ -18,7 +18,7 @@
       </style>
    </head>
    <body>
-      <h2 align="center" class="text-primary">AngularJS Sql Example</h2>
+      <h2 align="center" class="text-primary">Test Spike 3</h2>
       <div ng-app="myApp">
          <form ng-controller="EmployeeController" ng-submit="getData()">
             <p>
