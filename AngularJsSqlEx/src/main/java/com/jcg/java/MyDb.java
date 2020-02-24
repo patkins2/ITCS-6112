@@ -19,7 +19,7 @@ public class MyDb {
 		String connUrl = "jdbc:mysql://localhost:3306/test?";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connObj = DriverManager.getConnection(connUrl + "user=root&password=123456");			
+			connObj = DriverManager.getConnection(connUrl + "user=root&password=root");			
 		} catch (Exception exObj) {
 			exObj.printStackTrace();
 		}
