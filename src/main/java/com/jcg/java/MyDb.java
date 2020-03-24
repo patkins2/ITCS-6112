@@ -16,10 +16,10 @@ public class MyDb {
 
 	/***** Method #1 :: This Method Is Used To Create A Connection With The Database *****/
 	private static Connection connectDb() {
-		String connUrl = "jdbc:mysql://localhost:3306/test?";
+		String connUrl = "jdbc:mysql://localhost:3306/healthmanagement?";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connObj = DriverManager.getConnection(connUrl + "user=root&password=123456");			
+			connObj = DriverManager.getConnection(connUrl + "user=root&password=root");			
 		} catch (Exception exObj) {
 			exObj.printStackTrace();
 		}
