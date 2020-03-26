@@ -15,7 +15,7 @@ public class MyDb {
 	static Connection connObj = null;
 
 	/***** Method #1 :: This Method Is Used To Create A Connection With The Database *****/
-	private static Connection connectDb() {
+	static Connection connectDb() {
 		String connUrl = "jdbc:mysql://localhost:3306/healthmanagement?";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -27,24 +27,24 @@ public class MyDb {
 	}
 
 	/***** Method #2 :: This Method Is Used To Retrieve The Records From The Database *****/
-	public static List<Employee> getEmployeeListFromDb() {		
-		Employee emp = null;
-		List<Employee> eList = new ArrayList<Employee>();
+	public static List<Doctors> getDoctorsListFromDb() {		
+		Doctors doc = null;
+		List<Doctors> doctorList = new ArrayList<Doctors>();
 		try {
 			stmtObj = connectDb().createStatement();
 
-			String sql = "SELECT * FROM users";
+			String sql = "SELECT * FROM doctors";
 			rsObj = stmtObj.executeQuery(sql);
 			while(rsObj.next()) {
-				emp = new Employee(rsObj.getInt("id"), rsObj.getString("firstname"), rsObj.getString("lastname"));
-				eList.add(emp);
+				doc = new Doctors(rsObj.getString("username"), rsObj.getString("email"), rsObj.getString("address"), rsObj.getString("password"), rsObj.getString("telephoneNumber"), rsObj.getString("gender"), rsObj.getInt("patientNumber"), rsObj.getString("introduction"));
+				doctorList.add(doc);
 			}
 		} catch (SQLException sqlExObj) {
 			sqlExObj.printStackTrace();
 		} finally {
 			disconnectDb();
 		}
-		return eList;
+		return doctorList;
 	}
 
 	/***** Method #3 :: This Method Is Used To Close The Connection With The Database *****/
