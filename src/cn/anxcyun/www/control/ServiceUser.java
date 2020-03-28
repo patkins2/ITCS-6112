@@ -40,6 +40,11 @@ public class ServiceUser {
 		return  userDao.checkDoctor(email);
 	}
 	
+	public boolean checkDoctorStatus(String email) {
+		
+		return  userDao.checkDoctorStatus(email);
+	}
+	
 	public List<Patients> patientList(){
 		
 		return userDao.patientList();

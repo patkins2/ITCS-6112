@@ -28,7 +28,7 @@
 .valid:before {
   position: relative;
   left: 160px;
-  content: "✔";
+ 
 }
 
 /* Add a red text color and an "x" when the requirements are wrong */
@@ -39,7 +39,7 @@
 .invalid:before {
   position: relative;
   left: 160px;
-  content: "✖";
+ 
 }
 </style>
 </head>
@@ -138,7 +138,7 @@
                 &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input id=reg type="submit" value="Sign up" />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input type="reset" name="reset" id="reset" value="Reset">
             </p>
 <p>
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Already have an account？Please Login <a href="login.html">here</a>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Already have an account?&nbsp;Please Login <a href="login.jsp">here</a>
         </p>    
     </form>    
   </div>

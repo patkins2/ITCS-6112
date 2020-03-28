@@ -221,6 +221,41 @@ public class UserDao {
 		}
 		return flag;
 	}
+	
+	public boolean checkDoctorStatus(String email) {
+		boolean flag=false;
+		String sql= "select count(*) from doctor where email=? and status = 1;";
+		Connection conn =JDBConn.ConnJDBC();
+		PreparedStatement prestatement = null ;
+		
+		try {
+		
+			prestatement= conn.prepareStatement(sql);
+			prestatement.setString(1, email);
+			ResultSet rs = prestatement.executeQuery();
+		
+			while(rs.next()) {
+				int result = rs.getInt(1);
+				if(result>=1) {
+					flag = true;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			
+			try {
+				//πÿ±’¡¨Ω”
+				prestatement.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return flag;
+	}
 
 	public List<Patients> patientList(){
 		List<Patients> userlist = new LinkedList<Patients>();

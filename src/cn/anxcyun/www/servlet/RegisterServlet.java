@@ -35,8 +35,15 @@ public class RegisterServlet extends HttpServlet{
 
 			boolean flag1 = serviceUser.checkDoctor(email);
 			boolean flag = false;
-			if(flag1) { flag = serviceUser.InsertDoctor(doctor);}
-			String JDBCInfo = "You are not in the doctors' email list.";
+			boolean flag2 = serviceUser.checkDoctorStatus(email);
+			String JDBCInfo = "";
+			if(flag1) { 
+				if(!flag2) {
+				    flag = serviceUser.InsertDoctor(doctor);
+				    }
+				else { JDBCInfo = "You already signed up for a doctoral account.";}
+			} else { JDBCInfo = "You are not in the doctors' email list.";}
+			
 			if(flag) {
 				//if(doctor.getStatus() == false) {
 				    req.getRequestDispatcher("doctorsignupsuccess.jsp").forward(req, resp);

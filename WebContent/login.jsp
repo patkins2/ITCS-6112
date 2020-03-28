@@ -71,7 +71,7 @@
             </p>
             <p>
 				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-				New user？Please Sign up&nbsp; <a href="signup.html">here</a>
+				New user?&nbsp;Please Sign up&nbsp; <a href="signup.jsp">here</a>
             </p>    
             </form>    
             </div>
