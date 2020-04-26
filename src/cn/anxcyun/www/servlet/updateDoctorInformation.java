@@ -15,8 +15,6 @@ import cn.anxcyun.www.po.Patients;
 public class updateDoctorInformation extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("testtest");
-
 		HttpSession session = req.getSession();
 		String doctorEmail = (String)session.getAttribute("userEmail");	
 		System.out.println(doctorEmail);
@@ -44,5 +42,4 @@ public class updateDoctorInformation extends HttpServlet{
 		
 			System.out.println(flag);
 	}
-
 }
