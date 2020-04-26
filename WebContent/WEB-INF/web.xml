@@ -23,6 +23,33 @@
   	<url-pattern>/register</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+  	<servlet-name>updateDoctorInformation</servlet-name>
+  	<servlet-class>cn.anxcyun.www.servlet.updateDoctorInformation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>updateDoctorInformation</servlet-name>
+  	<url-pattern>/updateDoctorInformation</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>updatePatientInformation</servlet-name>
+  	<servlet-class>cn.anxcyun.www.servlet.updatePatientInformation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>updatePatientInformation</servlet-name>
+  	<url-pattern>/updatePatientInformation</url-pattern>
+  </servlet-mapping>
+  
+      <servlet>
+  	<servlet-name>updateMeasureData</servlet-name>
+  	<servlet-class>cn.anxcyun.www.servlet.updateMeasureData</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>updateMeasureData</servlet-name>
+  	<url-pattern>/updateMeasureData</url-pattern>
+  </servlet-mapping>
+  
   <!-- 登陆 -->
   <servlet>
   	<servlet-name>login</servlet-name>
@@ -68,6 +95,51 @@
   <servlet-mapping>
   	<servlet-name>select</servlet-name>
   	<url-pattern>/select</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>selectDoctor</servlet-name>
+  	<servlet-class>cn.anxcyun.www.servlet.ShowDoctorList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>selectDoctor</servlet-name>
+  	<url-pattern>/selectDoctor</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>PatientsList</servlet-name>
+  	<servlet-class>cn.anxcyun.www.servlet.ShowPatientList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PatientsList</servlet-name>
+  	<url-pattern>/PatientsList</url-pattern>
+  </servlet-mapping>
+  
+      <servlet>
+  	<servlet-name>showPatientInformation</servlet-name>
+  	<servlet-class>cn.anxcyun.www.servlet.showPatientInformation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>showPatientInformation</servlet-name>
+  	<url-pattern>/showPatientInformation</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>saveCareRelationship</servlet-name>
+  	<servlet-class>cn.anxcyun.www.servlet.saveCareRelationship</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>saveCareRelationship</servlet-name>
+  	<url-pattern>/saveCareRelationship</url-pattern>
+  </servlet-mapping>
+  
+      <servlet>
+  	<servlet-name>showDoctorInformation</servlet-name>
+  	<servlet-class>cn.anxcyun.www.servlet.showDoctorInformation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>showDoctorInformation</servlet-name>
+  	<url-pattern>/showDoctorInformation</url-pattern>
   </servlet-mapping>
   
   <!-- 添加用户 -->

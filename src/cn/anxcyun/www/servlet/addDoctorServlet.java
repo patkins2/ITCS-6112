@@ -22,13 +22,9 @@ public class addDoctorServlet extends HttpServlet{
 		ServiceUser serviceUser = new ServiceUser();
 		Doctor user =new Doctor();
 		
-		//赋值初始化
 		user.setEmail(email);
 		user.setUsername(username);
 		user.setPassword(password);
-		
-		
-		//调用函数
 		boolean flag = serviceUser.InsertDoctor(user);
 		String JDBCInfo = "error";
 		if(flag) {

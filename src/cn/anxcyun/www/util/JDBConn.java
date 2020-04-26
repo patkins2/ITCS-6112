@@ -13,15 +13,12 @@ public class JDBConn {
 	public static Connection ConnJDBC() {
 		
 		try {
-//			加载驱动
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			//连接
 			conn = DriverManager.getConnection(url, user, password);
 			
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return conn;

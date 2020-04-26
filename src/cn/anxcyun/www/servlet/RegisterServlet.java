@@ -27,7 +27,6 @@ public class RegisterServlet extends HttpServlet{
 		Doctor doctor = new Doctor();
 		Patients patients = new Patients();		
 		
-		//∏≥÷µ≥ı ºªØ
 		if(select.equals("1")) {
 			doctor.setEmail(email);
 			doctor.setUsername(username);
@@ -45,11 +44,8 @@ public class RegisterServlet extends HttpServlet{
 			} else { JDBCInfo = "You are not in the doctors' email list.";}
 			
 			if(flag) {
-				//if(doctor.getStatus() == false) {
 				    req.getRequestDispatcher("doctorsignupsuccess.jsp").forward(req, resp);
-				    //doctor.setStatus(true);
 				    System.out.println("success");
-				//} else JDBCInfo = "You already registeres for an account, please login";
 			}
 			else {
 				resp.getWriter().write(JDBCInfo);

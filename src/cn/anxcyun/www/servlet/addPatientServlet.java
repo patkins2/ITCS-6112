@@ -22,20 +22,17 @@ public class addPatientServlet extends HttpServlet{
 		ServiceUser serviceUser = new ServiceUser();
 		Patients user =new Patients();
 		
-		//赋值初始化
 		user.setEmail(email);
 		user.setUsername(username);
 		user.setPassword(password);
 		
-		
-		//调用函数
 		boolean flag = serviceUser.InsertPatients(user);
 		String JDBCInfo = "error";
 		if(flag) {
 			List<Patients> list = serviceUser.patientList();
 			req.setAttribute("list", list);
 			req.getRequestDispatcher("hello.jsp").forward(req, resp);
-			System.out.println("成功");
+			System.out.println("success");
 		}
 		else {
 			resp.getWriter().write(JDBCInfo);

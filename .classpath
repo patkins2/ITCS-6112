@@ -15,5 +15,9 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="C:/Users/yxyic/Downloads/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/yxyic/Downloads/gson-2.8.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
