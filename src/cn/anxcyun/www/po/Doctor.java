@@ -1,13 +1,4 @@
 package cn.anxcyun.www.po;
-
-
-    /**
-    * @ClassName: User
-    * @Description: TODO(这里用一句话描述这个类的作用)
-    * @author Anxc
-    * @date 2019年8月22日
-    *
-    */
     
 public class Doctor {
 	protected String username;
@@ -109,7 +100,11 @@ public class Doctor {
 	{
 		this.status = bool;
 	}
-	
+	public String toString()
+	{
+		return this.email + "|||" + this.username + "|||" + this.introduction;
+		
+	}
 	public Doctor(String username, String email, String address, String password, String telephoneNumber, String gender, int patientNumber, String introduction) {
 		super();
 		this.username = username;

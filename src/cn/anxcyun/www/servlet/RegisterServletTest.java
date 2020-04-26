@@ -78,7 +78,7 @@ class RegisterServletTest {
 	    patients.setUsername("qwe");
 	    patients.setPassword("qweWEE123");
 		boolean flag1 = serviceUser.InsertPatients(patients);
-		Assert.assertEquals("flag1 is wrong", false, flag1);
+		Assert.assertEquals("flag1 is wrong", true, flag1);
 	}
 
 }
