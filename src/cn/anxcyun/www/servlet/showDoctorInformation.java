@@ -20,14 +20,19 @@ public class showDoctorInformation extends HttpServlet {
 
 		HttpSession session = req.getSession();
 		String patientEmail = (String)session.getAttribute("userEmail");
-		System.out.println("test111");
 		System.out.println(patientEmail);
 		ServiceUser serviceUser = new ServiceUser();
 		String JDBCInfo = "error";
+		Boolean flag = serviceUser.CheckPatientFromCare(patientEmail);
+        if(flag) {
+		    Doctor doctor = serviceUser.getDoctorFromCare(patientEmail).get(0);
+		    req.setAttribute("doctor", doctor);
+		    req.getRequestDispatcher("showDoctorInformation.jsp").forward(req, resp);
+        }
+        else {
+		    req.getRequestDispatcher("checkFailed.jsp").forward(req, resp);
 
-		Doctor doctor = serviceUser.getDoctorFromCare(patientEmail).get(0);
-		req.setAttribute("doctor", doctor);
-		req.getRequestDispatcher("showDoctorInformation.jsp").forward(req, resp);
+        }
 
 		System.out.println("success");
 		

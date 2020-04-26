@@ -58,8 +58,8 @@ INSERT INTO doctor (email) VALUES ('doctor10@gmail.com');
 INSERT INTO doctor (email,username,password,status) VALUES ('doctor11@gmail.com','Anna','QWE123qwe','1');
 INSERT INTO doctor (email,username,password,status) VALUES ('doctor12@gmail.com','David','QWE123qwe','1');
 INSERT INTO Patient (email,username,password) VALUES ('Ben@gmail.com','Ben','QWE123qwe');
-INSERT INTO Patient (email,username,password) VALUES ('Lili@gmail.com','Lily','QWE123qwe');
-
+INSERT INTO Patient (email,username,password) VALUES ('Lily@gmail.com','Lily','QWE123qwe');
+INSERT INTO Patient (email,username,password) VALUES ('Geneva@gmail.com','Geneva','QWE123qwe');
 
 create table PatientHealthData(
 date varchar(20) not null,
@@ -71,4 +71,10 @@ BloodSugar varchar(255),
 Temp varchar(40),
 FOREIGN KEY (email) REFERENCES patient(email)
 );
+
+INSERT INTO PatientHealthData VALUES ('04/26/2020','Lily@gmail.com','64','110','100/60','5.3','98.6');
+
+INSERT INTO care VALUES ('doctor11@gmail.com','Lily@gmail.com');
+
+
 

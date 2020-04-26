@@ -24,6 +24,12 @@ public class UserDao {
 	static Statement stmtObj = null;
 
 	static Connection connObj = null;
+	
+	static ResultSet rsObj1 = null;
+
+	static Statement stmtObj1 = null;
+
+	static Connection connObj1 = null;
 	public boolean loginDoctor(Doctor user) {
 		
 		boolean flag=false;
@@ -135,6 +141,34 @@ public class UserDao {
 			prestatement.setString(2, user.getUsername());
 			prestatement.setString(3, user.getPassword());
 			
+			int count = prestatement.executeUpdate();
+			if(count>=1) {
+				flag =true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			try {
+				prestatement.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return flag;
+	}
+	
+	public boolean CheckPatientFromCare(String email) {
+		boolean flag=false;
+		String sql= "select from care where patientEmail = ?;";
+		Connection conn =JDBConn.ConnJDBC();
+		PreparedStatement prestatement = null ;
+		
+		try {
+			prestatement= conn.prepareStatement(sql);
+			prestatement.setString(1, email);
 			int count = prestatement.executeUpdate();
 			if(count>=1) {
 				flag =true;
@@ -335,28 +369,21 @@ public class UserDao {
 		return userlist;
 	}
 
-	public ArrayList<Patients> getPatientsListFromDb(String userEmail) {		
-		Patients user1 = null;
+	public ArrayList<Patients> getPatientsListFromDb(String userEmail) {
+		ArrayList<Patients> user1 = new ArrayList<Patients>();
 		ArrayList<Patients> userlist = new ArrayList<Patients>();
 		try {
-			stmtObj = JDBConn.ConnJDBC().createStatement();
-			String a = "select username, email, address, telephoneNumber, gender, birthdate, medicalHistory from patient where email = (select patientEmail from care where doctorEmail='";
+			stmtObj1 = JDBConn.ConnJDBC().createStatement();
+			String a = "select patientEmail from care where doctorEmail='";
             String b = userEmail;
             String c = a.concat(b);
-            String d = "');";
+            String d = "';";
 			String sql= c.concat(d);
-
-			rsObj = stmtObj.executeQuery(sql);
-			while(rsObj.next()) {
-				user1 = new Patients();
-				user1.setUsername(rsObj.getString(1));
-				user1.setEmail(rsObj.getString(2));				
-				user1.setAddress(rsObj.getString(3));
-				user1.setTelephoneNumber(rsObj.getString(4));
-				user1.setGender(rsObj.getString(5));
-				user1.setbirthDate(rsObj.getString(6));
-				user1.setMedicalHistory(rsObj.getString(7));
-				userlist.add(user1);
+			rsObj1 = stmtObj1.executeQuery(sql);
+			while(rsObj1.next()) {
+				String temp = rsObj1.getString(1);
+				user1 = getPatientsFromDb(temp);
+				userlist.add(user1.get(0));
 			}
 		} catch (SQLException sqlExObj) {
 			sqlExObj.printStackTrace();

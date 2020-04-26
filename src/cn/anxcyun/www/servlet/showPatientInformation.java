@@ -21,7 +21,6 @@ public class showPatientInformation extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("testtest");
 		JSONArray arrayObj = null;
 		String email = (String)req.getParameter("radiobutton");
 		System.out.println(email);

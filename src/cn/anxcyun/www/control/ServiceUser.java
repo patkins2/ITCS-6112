@@ -21,6 +21,11 @@ public class ServiceUser {
 		return  userDao.InsertDoctor(user);
 	}
 	
+	public boolean CheckPatientFromCare(String email) {
+		
+		return  userDao.CheckPatientFromCare(email);
+	}
+	
 	public boolean saveCareRelationship(String doctorEmail, String patientEmail) {
 		
 		return  userDao.saveCareRelationship(doctorEmail, patientEmail);
