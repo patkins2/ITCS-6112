@@ -24,21 +24,18 @@ public class UserDao {
 	static Statement stmtObj = null;
 
 	static Connection connObj = null;
-//	登陆功能实现
 	public boolean loginDoctor(Doctor user) {
 		
-		boolean flag=false;//默认登陆失败
+		boolean flag=false;
 		String sql= "select count(1) from doctor where email=? and password=?;";
 		Connection conn =JDBConn.ConnJDBC();
 		PreparedStatement prestatement = null ;
 		
 		try {
-			//执行sql
 			prestatement= conn.prepareStatement(sql);
 			prestatement.setString(1, user.getEmail());
 			prestatement.setString(2, user.getPassword());
 			ResultSet rs = prestatement.executeQuery();
-			//获取第一列
 			while(rs.next()) {
 				int result = rs.getInt(1);
 				if(result>=1) {
@@ -46,16 +43,13 @@ public class UserDao {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			
 			try {
-				//关闭连接
 				prestatement.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -66,18 +60,16 @@ public class UserDao {
 	
 	public boolean loginPatients(Patients user) {
 		
-		boolean flag=false;//默认登陆失败
+		boolean flag=false;
 		String sql= "select count(1) from patient where email=? and password=?;";
 		Connection conn =JDBConn.ConnJDBC();
 		PreparedStatement prestatement = null ;
 		
 		try {
-			//执行sql
 			prestatement= conn.prepareStatement(sql);
 			prestatement.setString(1, user.getEmail());
 			prestatement.setString(2, user.getPassword());
 			ResultSet rs = prestatement.executeQuery();
-			//获取第一列
 			while(rs.next()) {
 				int result = rs.getInt(1);
 				if(result>=1) {
@@ -85,16 +77,13 @@ public class UserDao {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			
 			try {
-				//关闭连接
 				prestatement.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -121,7 +110,6 @@ public class UserDao {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			
@@ -129,7 +117,6 @@ public class UserDao {
 				prestatement.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -137,35 +124,30 @@ public class UserDao {
 	}
 	
 	public boolean InsertPatient(Patients user) {
-		boolean flag=false;//默认注册失败
+		boolean flag=false;
 		String sql= "insert into patient(email,username,password) values(?,?,?);";
 		Connection conn =JDBConn.ConnJDBC();
 		PreparedStatement prestatement = null ;
 		
 		try {
-			//执行sql
 			prestatement= conn.prepareStatement(sql);
 			prestatement.setString(1, user.getEmail());
 			prestatement.setString(2, user.getUsername());
 			prestatement.setString(3, user.getPassword());
 			
-			//获取修改的行数
 			int count = prestatement.executeUpdate();
 			if(count>=1) {
 				flag =true;
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			
 			try {
-				//关闭连接
 				prestatement.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -173,8 +155,7 @@ public class UserDao {
 	}
 	
 	public boolean updatePatientInformation(Patients user) {
-		boolean flag=false;//默认注册失败
-		//UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
+		boolean flag=false;
 		String a= "update patient set address = ?, telephoneNumber = ? , gender = ? ,birthdate = ? ,medicalHistory = ? where email = '";
 		String b = user.getEmail();
 		String c = a.concat(b);
@@ -184,7 +165,6 @@ public class UserDao {
 		PreparedStatement prestatement = null ;
 		
 		try {
-			//执行sql
 			prestatement= conn.prepareStatement(sql);
 			prestatement.setString(1, user.getAddress());
 			prestatement.setString(2, user.getTelephoneNumber());
@@ -192,23 +172,19 @@ public class UserDao {
 			prestatement.setString(4, user.getbirthDate());
 			prestatement.setString(5, user.getMedicalHistory());
 			
-			//获取修改的行数
 			int count = prestatement.executeUpdate();
 			if(count>=1) {
 				flag =true;
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			
 			try {
-				//关闭连接
 				prestatement.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -216,18 +192,12 @@ public class UserDao {
 	}
 	
 	public boolean updateMeasureData(String date, String patientEmail, String height,String weight,String bloodPressure,String bloodSugar,String temp) {
-		boolean flag=false;//默认注册失败
-		//UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
+		boolean flag=false;
 		String sql= "insert into patienthealthdata values (?,?,?,?,?,?,?)";
-		//String b = patientEmail;
-		//String c = a.concat(b);
-		//String d = "';";
-		//String sql = c.concat(d);		
 		Connection conn =JDBConn.ConnJDBC();
 		PreparedStatement prestatement = null ;
 		
 		try {
-			//执行sql
 			prestatement= conn.prepareStatement(sql);
 			prestatement.setString(1, date);
 
@@ -238,24 +208,19 @@ public class UserDao {
 			prestatement.setString(6, bloodSugar);
 			prestatement.setString(7, temp);
 
-			
-			//获取修改的行数
 			int count = prestatement.executeUpdate();
 			if(count>=1) {
 				flag =true;
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			
 			try {
-				//关闭连接
 				prestatement.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -269,27 +234,22 @@ public class UserDao {
 		PreparedStatement prestatement = null ;
 		
 		try {
-			//执行sql
 			prestatement= conn.prepareStatement(sql);
 			prestatement.setString(1, (String)doctorEmail);
 			prestatement.setString(2, (String)patientEmail);			
-			//获取修改的行数
 			int count = prestatement.executeUpdate();
 			if(count>=1) {
 				flag =true;
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			
 			try {
-				//关闭连接
 				prestatement.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -298,33 +258,27 @@ public class UserDao {
 	
 	public boolean updateCareRelationship(String doctorEmail, String patientEmail) {
 		boolean flag=false;
-		//UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
 		String sql= "update care set doctorEmail = ? where patientEmail = ?;";
 		Connection conn =JDBConn.ConnJDBC();
 		PreparedStatement prestatement = null ;
 		
 		try {
-			//执行sql
 			prestatement= conn.prepareStatement(sql);
 			prestatement.setString(1, (String)doctorEmail);
 			prestatement.setString(2, (String)patientEmail);			
-			//获取修改的行数
 			int count = prestatement.executeUpdate();
 			if(count>=1) {
 				flag =true;
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			
 			try {
-				//关闭连接
 				prestatement.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -350,7 +304,6 @@ public class UserDao {
 			}
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -376,7 +329,6 @@ public class UserDao {
 			}
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -409,7 +361,6 @@ public class UserDao {
 		} catch (SQLException sqlExObj) {
 			sqlExObj.printStackTrace();
 		} finally {
-			//disconnectDb();
 		}
 		return userlist;
 	}
@@ -419,7 +370,6 @@ public class UserDao {
 		ArrayList<MeasureData> measureDatalist = new ArrayList<MeasureData>();
 		try {
 			stmtObj = JDBConn.ConnJDBC().createStatement();
-			//String patientEmail, String height,String weight,String bloodPressure,String bloodSugar,String temp
 			String a = "select height, weight, bloodPressure, bloodSugar, temp from patienthealthdata where email = '";
             String b = userEmail;
             String c = a.concat(b);
@@ -440,7 +390,6 @@ public class UserDao {
 		} catch (SQLException sqlExObj) {
 			sqlExObj.printStackTrace();
 		} finally {
-			//disconnectDb();
 		}
 		return measureDatalist;
 	}
@@ -504,7 +453,6 @@ public class UserDao {
 		} catch (SQLException sqlExObj) {
 			sqlExObj.printStackTrace();
 		} finally {
-			//disconnectDb();
 		}
 		return userlist;
 	}
@@ -529,7 +477,6 @@ public class UserDao {
 		} catch (SQLException sqlExObj) {
 			sqlExObj.printStackTrace();
 		} finally {
-			//disconnectDb();
 		}
 		return userlist;
 	}
@@ -553,16 +500,13 @@ public class UserDao {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			
 			try {
-				//关闭连接
 				prestatement.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -589,16 +533,13 @@ public class UserDao {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			
 			try {
-				//关闭连接
 				prestatement.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -624,16 +565,13 @@ public class UserDao {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			
 			try {
-				//关闭连接
 				prestatement.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -646,7 +584,6 @@ public class UserDao {
 		try {
 			stmtObj = JDBConn.ConnJDBC().createStatement();
 			String a = "select username, email, address, telephoneNumber, gender, introduction from doctor where email = (select doctorEmail from care where patientEmail='";
-			//String a = "select username, email, address, telephoneNumber, gender, introduction from care where patientEmail ='";
             String b = userEmail;
             String c = a.concat(b);
             String d ="');";
@@ -666,7 +603,6 @@ public class UserDao {
 		} catch (SQLException sqlExObj) {
 			sqlExObj.printStackTrace();
 		} finally {
-			//disconnectDb();
 		}
 		return userlist;
 	}

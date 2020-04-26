@@ -39,17 +39,14 @@ public class showPatientInformation extends HttpServlet {
 		for(MeasureData d:measureData) {
 			measureDataInfo.add(d.toString());
 		}
-		// todo:
-		//String t = checkData(email);
-		
+
 		Patients patients = serviceUser.getPatientsFromDb(email).get(0);
 		arrayObj = new JSONArray(measureData);
 		req.setAttribute("measureData", measureData);
-		//req.setAttribute("td", t);
 		req.setAttribute("patients", patients);
 		req.getRequestDispatcher("showPatientInformation.jsp").forward(req, resp);
 		System.out.println(email);
-		System.out.println("³É¹¦");
+		System.out.println("success");
 	
 		
 	}

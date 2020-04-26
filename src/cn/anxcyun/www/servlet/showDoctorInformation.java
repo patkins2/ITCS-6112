@@ -18,8 +18,6 @@ public class showDoctorInformation extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		//String email = (String)req.getParameter("radiobutton");
-		//System.out.println(email);
 		HttpSession session = req.getSession();
 		String patientEmail = (String)session.getAttribute("userEmail");
 		System.out.println("test111");
@@ -31,7 +29,7 @@ public class showDoctorInformation extends HttpServlet {
 		req.setAttribute("doctor", doctor);
 		req.getRequestDispatcher("showDoctorInformation.jsp").forward(req, resp);
 
-		System.out.println("³É¹¦");
+		System.out.println("success");
 		
 	}
 

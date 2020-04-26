@@ -17,12 +17,9 @@ public class LoginServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//req.setCharacterEncoding("utf-8");
-		//String name = req.getParameter("username");
-		//String number  = req.getParameter("number");
+		
 		String email = new String(req.getParameter("email").getBytes("iso-8859-1"), "utf-8");
 		String password = new String(req.getParameter("password").getBytes("iso-8859-1"), "utf-8");
-		//String name = req.getParameter("username");
 		HttpSession session = req.getSession();
 		session.setAttribute("userEmail", email);
 		
@@ -30,7 +27,6 @@ public class LoginServlet extends HttpServlet {
 		Doctor doctor =new Doctor();
 		Patients patients =new Patients();
 		
-		//赋值初始化
 		doctor.setEmail(email);
 		doctor.setPassword(password);
 		patients.setEmail(email);
@@ -55,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 			req.setAttribute("name", name);
 			req.getRequestDispatcher("doctorhomepage.jsp").forward(req, resp);
 
-			System.out.println("成功");
+			System.out.println("success");
 			
 		}
 		if(flag2) {
@@ -73,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 			}
 			req.setAttribute("name", name);
 			req.getRequestDispatcher("patienthomepage.jsp").forward(req, resp);
-			System.out.println("成功");
+			System.out.println("success");
 		}
 		if(!flag1 && !flag2) {
 			req.setAttribute("flag", "0");

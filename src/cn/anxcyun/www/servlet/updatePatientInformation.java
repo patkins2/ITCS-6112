@@ -22,7 +22,6 @@ public class updatePatientInformation extends HttpServlet {
 		HttpSession session = req.getSession();
 		String patientEmail = (String)session.getAttribute("userEmail");	
 		System.out.println(patientEmail);
-		//String password = new String(req.getParameter("password").getBytes("iso-8859-1"), "utf-8");
 		String address = new String(req.getParameter("address").getBytes("iso-8859-1"), "utf-8");
 		String telephoneNumber = new String(req.getParameter("telephoneNumber").getBytes("iso-8859-1"), "utf-8");
 		String gender = new String(req.getParameter("gender").getBytes("iso-8859-1"), "utf-8");
@@ -32,7 +31,6 @@ public class updatePatientInformation extends HttpServlet {
 		ServiceUser serviceUser = new ServiceUser();
 		Patients patient =new Patients();
 		
-		//∏≥÷µ≥ı ºªØ
 		patient.setEmail(patientEmail);
 		patient.setAddress(address);
 		patient.setTelephoneNumber(telephoneNumber);
@@ -40,8 +38,7 @@ public class updatePatientInformation extends HttpServlet {
 		patient.setbirthDate(birthday);
 		patient.setMedicalHistory(medicalHistory);
 
-		// todo:
-		//String t = checkData(email);
+
 		String JDBCInfo = "error";
 		boolean flag = serviceUser.updatePatientInformation(patient);
 		if(flag) req.getRequestDispatcher("savesuccess.jsp").forward(req, resp);

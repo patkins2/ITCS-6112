@@ -40,15 +40,14 @@ public class ShowPatientList extends HttpServlet {
 			}
 			if(patientList != null && patientList.size() > 0) {				
 
-				System.out.println("Total Employee Records Fetch From Db Are?= " + patientList.size());
+				System.out.println("success");
 
 			} else {
 
-				System.out.println("No Employee Records Are Present In Db");
+				System.out.println("failed");
 
 			}
 
-			System.out.println("test");
 			System.out.println(patientList.toString());
 			arrayObj = new JSONArray(patientList);
 			req.setAttribute("patients", patientList);

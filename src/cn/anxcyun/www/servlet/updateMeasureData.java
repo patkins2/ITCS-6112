@@ -22,7 +22,6 @@ public class updateMeasureData extends HttpServlet {
 		HttpSession session = req.getSession();
 		String patientEmail = (String)session.getAttribute("userEmail");	
 		System.out.println(patientEmail);
-		//String password = new String(req.getParameter("password").getBytes("iso-8859-1"), "utf-8");
 		String date = new String(req.getParameter("date").getBytes("iso-8859-1"), "utf-8");
 		String height = new String(req.getParameter("height").getBytes("iso-8859-1"), "utf-8");
 		String weight = new String(req.getParameter("weight").getBytes("iso-8859-1"), "utf-8");
@@ -32,8 +31,7 @@ public class updateMeasureData extends HttpServlet {
 
 		ServiceUser serviceUser = new ServiceUser();
 		Patients patient =new Patients();
-		// todo:
-		//String t = checkData(email);
+
 		String JDBCInfo = "error";
 		boolean flag = serviceUser.updateMeasureData(date,patientEmail,height,weight,bloodPressure,bloodSugar,temp);
 		if(flag) req.getRequestDispatcher("savesuccess.jsp").forward(req, resp);
