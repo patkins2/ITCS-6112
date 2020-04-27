@@ -162,13 +162,13 @@ public class UserDao {
 	
 	public boolean CheckPatientFromCare(String email) {
 		boolean flag=false;
-		String sql= "select from care where patientEmail = ?;";
+		String sql= "select * from care where patientEmail = ?;";
 		Connection conn =JDBConn.ConnJDBC();
 		PreparedStatement prestatement = null ;
 		
 		try {
 			prestatement= conn.prepareStatement(sql);
-			prestatement.setString(1, email);
+			prestatement.setString(1, (String)email);
 			int count = prestatement.executeUpdate();
 			if(count>=1) {
 				flag =true;
@@ -234,7 +234,6 @@ public class UserDao {
 		try {
 			prestatement= conn.prepareStatement(sql);
 			prestatement.setString(1, date);
-
 			prestatement.setString(2, patientEmail);
 			prestatement.setString(3, height);
 			prestatement.setString(4, weight);
@@ -397,7 +396,7 @@ public class UserDao {
 		ArrayList<MeasureData> measureDatalist = new ArrayList<MeasureData>();
 		try {
 			stmtObj = JDBConn.ConnJDBC().createStatement();
-			String a = "select height, weight, bloodPressure, bloodSugar, temp from patienthealthdata where email = '";
+			String a = "select date, height, weight, bloodPressure, bloodSugar, temp from patienthealthdata where email = '";
             String b = userEmail;
             String c = a.concat(b);
             String d = "';";
@@ -406,11 +405,12 @@ public class UserDao {
 			rsObj = stmtObj.executeQuery(sql);
 			while(rsObj.next()) {
 				measureData = new MeasureData();
-				measureData.setHeight(rsObj.getString(1));
-				measureData.setWeight(rsObj.getString(2));				
-				measureData.setBloodPressure(rsObj.getString(3));
-				measureData.setBloodSugar(rsObj.getString(4));
-				measureData.setTemp(rsObj.getString(4));
+				measureData.setDate(rsObj.getString(1));
+				measureData.setHeight(rsObj.getString(2));
+				measureData.setWeight(rsObj.getString(3));				
+				measureData.setBloodPressure(rsObj.getString(4));
+				measureData.setBloodSugar(rsObj.getString(5));
+				measureData.setTemp(rsObj.getString(6));
 				
 				measureDatalist.add(measureData);
 			}
@@ -471,10 +471,10 @@ public class UserDao {
 				user1.setUsername(rsObj.getString(1));
 				user1.setEmail(rsObj.getString(2));				
 				user1.setAddress(rsObj.getString(3));
-				user1.setTelephoneNumber(rsObj.getString(3));
-				user1.setGender(rsObj.getString(4));
-				user1.setbirthDate(rsObj.getString(5));
-				user1.setMedicalHistory(rsObj.getString(6));
+				user1.setTelephoneNumber(rsObj.getString(4));
+				user1.setGender(rsObj.getString(5));
+				user1.setbirthDate(rsObj.getString(6));
+				user1.setMedicalHistory(rsObj.getString(7));
 				userlist.add(user1);
 			}
 		} catch (SQLException sqlExObj) {
@@ -622,9 +622,9 @@ public class UserDao {
 				user1.setUsername(rsObj.getString(1));
 				user1.setEmail(rsObj.getString(2));				
 				user1.setAddress(rsObj.getString(3));
-				user1.setTelephoneNumber(rsObj.getString(3));
-				user1.setGender(rsObj.getString(4));
-				user1.setIntroduction(rsObj.getString(5));
+				user1.setTelephoneNumber(rsObj.getString(4));
+				user1.setGender(rsObj.getString(5));
+				user1.setIntroduction(rsObj.getString(6));
 				userlist.add(user1);
 			}
 		} catch (SQLException sqlExObj) {
