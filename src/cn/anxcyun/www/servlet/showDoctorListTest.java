@@ -26,6 +26,7 @@ public class showDoctorListTest {
 		for(Doctor d:doctorList) {
 			doctorInfoList.add(d.toString());
 		}
+		System.out.println(doctorList.toString());
 		Assert.assertEquals("Test failed", "[doctor11@gmail.com|||Anna|||null, doctor12@gmail.com|||David|||null]", doctorList.toString());
 	}
 
