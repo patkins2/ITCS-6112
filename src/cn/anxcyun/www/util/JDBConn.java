@@ -8,7 +8,7 @@ public class JDBConn {
 	public static Connection conn = null;
 	private static final String url="jdbc:mysql://localhost:3306/itcs6112_project?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true";
 	private static final String user="root";
-	private static final String password="123456";
+	private static final String password="root";
 	
 	public static Connection ConnJDBC() {
 		

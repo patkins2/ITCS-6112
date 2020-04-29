@@ -35,7 +35,7 @@ public class updateMeasureData extends HttpServlet {
 		String JDBCInfo = "error";
 		boolean flag = serviceUser.updateMeasureData(date,patientEmail,height,weight,bloodPressure,bloodSugar,temp);
 		if(flag) req.getRequestDispatcher("savesuccess.jsp").forward(req, resp);
-		else req.getRequestDispatcher("savefaild.jsp").forward(req, resp);
+		else req.getRequestDispatcher("savefailed.jsp").forward(req, resp);
 
 			System.out.println(flag);
 		

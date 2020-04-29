@@ -42,7 +42,7 @@ public class updatePatientInformation extends HttpServlet {
 		String JDBCInfo = "error";
 		boolean flag = serviceUser.updatePatientInformation(patient);
 		if(flag) req.getRequestDispatcher("savesuccess.jsp").forward(req, resp);
-		else req.getRequestDispatcher("savefaild.jsp").forward(req, resp);
+		else req.getRequestDispatcher("savefailed.jsp").forward(req, resp);
 			System.out.println(flag);
 		
 	}
